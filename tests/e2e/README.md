@@ -10,7 +10,7 @@ The proof uses Buzz's actual Postgres migrations, Redis pub/sub, relay ingest/qu
 2. Six signed source messages are published.
 3. Comb obtains stable exact counts before and after retrieval and verifies all six signatures.
 4. Comb publishes a signed proposal with exact source receipts.
-5. A separate human reviewer key signs approval.
+5. A separate disposable reviewer identity signs approval.
 6. Comb publishes the ratified record.
 7. An uninvited identity cannot read the private channel.
 8. The owner deletes a primary source.
@@ -46,4 +46,4 @@ cargo run -p comb-cli -- prove \
   --store tests/e2e/buzz-main-proof.db
 ```
 
-The SQLite file is ignored. The JSON report contains no private keys or source bodies.
+The SQLite file is ignored. The JSON report contains no private keys or source bodies. `buzzSha` is supplied by the operator after verifying the checkout; Buzz does not currently expose a build-attestation endpoint that cryptographically binds it to the running relay binary.

@@ -4,9 +4,15 @@ This document defines what Comb may claim and what the first release must enforc
 
 ## Product boundary
 
-Comb is an evidence-backed, channel-local organizational memory agent. It converts authorized Buzz activity into proposed knowledge, obtains independently signed human review, publishes a ratified record, and invalidates that record when its evidence is deleted or becomes inaccessible.
+Comb's target product contract is an evidence-backed, channel-local organizational memory agent. It converts authorized Buzz activity into proposed knowledge, obtains independently signed human review, publishes a ratified record, and invalidates that record when its evidence is deleted or becomes inaccessible.
 
 Comb is not a workspace-wide surveillance bot, a Buzz database reader, a private-DM collector, a huddle recording service, or a custodian of user private keys.
+
+## Current implementation status
+
+The deterministic knowledge kernel (`comb-core`, `comb-engine`, and `comb-store`) and the real Buzz protocol compatibility path (`comb-buzz` and `comb-cli`) are tested separately. The proof harness controls disposable owner, agent, reviewer, and outsider identities so it can verify signatures and relay behavior without external credentials. It does not prove that a human clicked an approval UI.
+
+`combd` currently authenticates, checks authorized channel state, and fails closed when access is lost. Folding live Buzz events through the kernel and publishing governed records from the long-running worker remains integration work. The production trust model below is therefore a contract for that integration, not a claim about the disposable proof harness.
 
 ## Trust model
 

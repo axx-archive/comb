@@ -48,7 +48,7 @@ test("renders honest initial delivery status from the manifest", async () => {
   const html = await response.text();
 
   assert.match(html, /Comb core/i);
-  assert.match(html, /Working \/ 29 tests/i);
+  assert.match(html, /Working \/ 31 tests/i);
   assert.match(html, /Working in Comb/i);
   assert.match(html, /Compatibility demo/i);
   assert.match(html, /Tested \/ acfbb1b \/ Jul 22, 2026/i);

@@ -45,7 +45,7 @@ The deterministic proof passed against untouched `block/buzz@acfbb1bb6af54cb29cb
 
 - 6/6 stable self-attested source coverage;
 - outsider access denied;
-- human reviewer signed their own review;
+- a separate disposable reviewer identity signed its own review;
 - deleted source became unavailable;
 - dependent Comb record invalidated and deleted;
 - restart receipt remained idempotent.

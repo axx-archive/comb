@@ -4,7 +4,7 @@
 
 Comb turns authorized Buzz conversations into reviewable organizational memory. Every proposed claim carries signed source receipts. Humans ratify or reject proposals with their own Buzz identities. When evidence becomes unavailable, Comb invalidates the dependent memory instead of quietly presenting stale prose as truth.
 
-> **Status: working experimental compatibility build.** The deterministic proof passed against untouched `block/buzz@acfbb1bb6af54cb29cb152496ff43b8285dcb8cf`: stable 6/6 self-attested coverage, private-channel outsider denial, independently signed human review, deletion-driven invalidation, and restart idempotence. Comb currently speaks Buzz's public protocol using ordinary channel messages; the proposed upstream protocol would let Buzz enforce the knowledge semantics at ingest.
+> **Status: working experimental compatibility build.** The deterministic proof passed against untouched `block/buzz@acfbb1bb6af54cb29cb152496ff43b8285dcb8cf`: stable 6/6 self-attested coverage, explicit private-channel outsider denial, a separately signed disposable reviewer identity, deletion-driven invalidation, and restart idempotence. Comb currently speaks Buzz's public protocol using ordinary channel messages; the proposed upstream protocol would let Buzz enforce the knowledge semantics at ingest.
 
 ## The idea
 
@@ -20,21 +20,23 @@ The deterministic That's Cool demo follows a product decision from discussion, t
 
 ## Architecture
 
-Comb is a standalone Rust service and CLI. It connects to Buzz over authenticated WebSockets, reads only channels where its own Buzz identity is a member, and publishes signed events back into the same channel.
+Comb currently has two independently validated layers: a deterministic knowledge kernel and a real Buzz public-protocol compatibility proof. The proof connects over authenticated WebSockets, scopes activity to one private channel, and publishes signed compatibility events there. The long-running worker currently observes authorized channel state; wiring the kernel into that worker is still roadmap work.
 
 ```text
-Buzz channel events
-        |
-        v
-  comb-buzz adapter ---- verifies signatures, scope, and coverage
-        |
-        v
-  comb-engine ---------- proposes, reviews, ratifies, supersedes, invalidates
-        |
-        +---------------> local metadata store (IDs and digests, not source bodies)
-        |
-        v
-signed Comb events in the original Buzz channel
+UNIT-TESTED KERNEL                 LIVE BUZZ COMPATIBILITY PROOF
+
+comb-core + comb-engine           Buzz authenticated WebSockets
+        |                                   |
+        v                                   v
+comb-store metadata               comb-buzz + comb-cli
+(IDs/digests, no bodies)                    |
+                                            v
+                                  signed kind-9 compatibility events
+                                  in one private Buzz channel
+
+                    INTEGRATION ROADMAP
+           combd folds authorized events through the kernel
+              and publishes governed records back to Buzz
 ```
 
 See [the architecture contract](docs/architecture.md) for security boundaries and [the upstream plan](docs/upstream.md) for the proposed Buzz primitive.
@@ -59,7 +61,7 @@ cargo test --workspace
 cd site && npm ci && npm test && npm run build
 ```
 
-The Buzz compatibility test is run against a clean checkout pinned to an exact upstream commit. Its report records that SHA, the relay version, signed event IDs, access-control assertions, and invalidation result.
+The Buzz compatibility test is run by the operator against a clean checkout pinned to an exact upstream commit. Its report records the operator-supplied SHA, signed event IDs, access-control assertions, and invalidation result. Buzz does not currently expose a build-attestation endpoint, so the report does not cryptographically bind that SHA to the running relay binary; the reproduction procedure makes that provenance boundary explicit.
 
 Run the deterministic proof against an available Buzz relay:
 

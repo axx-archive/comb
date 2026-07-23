@@ -124,7 +124,7 @@ async fn prove(relay: &str, buzz_sha: String, store_path: Option<PathBuf>) -> Re
             &reviewer_client,
             &reviewer,
             "Mina at That's Cool",
-            "Disposable human reviewer",
+            "Disposable reviewer identity",
         ),
     ] {
         client.publish(&sign_profile(keys, name, about)?).await?;
@@ -350,10 +350,18 @@ async fn prove(relay: &str, buzz_sha: String, store_path: Option<PathBuf>) -> Re
     store.put_artifact(&receipt)?;
     let restart_idempotence_receipt = store.artifact(&record.record_id)? == Some(receipt);
 
-    let outsider_denied = outsider_client
-        .query_channel(channel_id, &[9], 10)
-        .await
-        .map_or(true, |events| events.is_empty());
+    let outsider_denied = match outsider_client.query_channel(channel_id, &[9], 10).await {
+        Ok(events) => events.is_empty(),
+        Err(error) if is_expected_private_channel_denial(&error) => true,
+        Err(error) => {
+            return Err(error).context(
+                "outsider privacy probe failed for a reason other than an explicit Buzz access denial",
+            );
+        }
+    };
+    if !outsider_denied {
+        bail!("uninvited identity received private-channel events");
+    }
 
     owner_client
         .publish(&sign_delete_event(
@@ -469,10 +477,37 @@ fn relay_host(relay: &str) -> String {
         .to_owned()
 }
 
+fn is_expected_private_channel_denial(error: &anyhow::Error) -> bool {
+    error.to_string() == "relay closed query: restricted: not a channel member"
+}
+
 fn unix_now() -> Result<i64> {
     let seconds = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .context("system clock predates Unix epoch")?
         .as_secs();
     i64::try_from(seconds).context("Unix timestamp exceeds i64")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::is_expected_private_channel_denial;
+
+    #[test]
+    fn exact_private_channel_denial_is_accepted() {
+        let error = anyhow::anyhow!("relay closed query: restricted: not a channel member");
+        assert!(is_expected_private_channel_denial(&error));
+    }
+
+    #[test]
+    fn network_or_auth_failures_cannot_pass_as_privacy() {
+        for message in [
+            "operation timed out",
+            "failed to connect to ws://127.0.0.1:4300",
+            "relay closed query: auth-required: must authenticate",
+        ] {
+            let error = anyhow::anyhow!(message);
+            assert!(!is_expected_private_channel_denial(&error));
+        }
+    }
 }

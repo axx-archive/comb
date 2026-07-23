@@ -9,7 +9,7 @@ export type StatusValue = {
 export const projectStatus = {
   combCore: {
     label: "Comb core",
-    value: "Working / 29 tests",
+    value: "Working / 31 tests",
     tone: "tested",
   },
   buzzCompatibility: {

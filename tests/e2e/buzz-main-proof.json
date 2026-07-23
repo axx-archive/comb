@@ -2,19 +2,19 @@
   "schema": "comb.proof.v1",
   "buzzSha": "acfbb1bb6af54cb29cb152496ff43b8285dcb8cf",
   "relay": "ws://127.0.0.1:4300",
-  "channelId": "b2fe6337-31b5-4672-9dfe-4102ebf53a69",
+  "channelId": "5fca6a28-acea-41b0-a2a8-fa30004d16d8",
   "sourceEventIds": [
-    "26d2efd7e7679f63d462fc0ba995d993cce25fc217d359cd4c96b41f39ecc079",
-    "4003bf687cb5bd8a88d9b88202d524def79c15ee11b7bbffd81b96ca1176d0e9",
-    "541b1b9ec42bfb57800607feabdea1006dd07efa52883e5f6bef3b4d9fcb3d68",
-    "bbd7ebc019f2cee149ae03cae15e1551223a45fa0813d8a8d75c05fff9faa443",
-    "be8d71c2bb5f00c8ad620efcb7027df8181beb2ce268a979de4abbc692fc1731",
-    "fb6e559239a1d7874d553abbd058bdcc272658575fccbe5a5e0fbb46e5308b77"
+    "36a2a1f43922095a0247414295e6af2f0a16168bf791065cbbb0dede9e8cf65e",
+    "373afe7ed18f00c2f4b652b385718afa5bdad34f3e0f8c9d1e3f26e7b6c2fc9a",
+    "78c81631175f8021e7f52db02637cafb7d92de5031ab9a3947085388ac4efa22",
+    "829627813b09fd61c7eb0d2ce3827e633969655f5d805ac0ba63d8cdca022826",
+    "8902e97f163dda85e40628b9a201e39f58c8259c742aee941694e0e812f5e463",
+    "8f06d22783edc51d5880e67d983601b520b273a69f9aa6b4756b258cd256a985"
   ],
-  "proposalEventId": "0965d269597cb2be6372653d4444bf91505548fc930664e6d990ab7c2dc3b713",
-  "reviewEventId": "9ac064fe010d6708726a53a8e896dbb6e0e1ede7961f6f5d2acdc668b25f767b",
-  "recordEventId": "31e71657af868acb8739bf5774cff998ba8b1702cbc6b19eb866dc65b0db4234",
-  "invalidationEventId": "3d84444f1b839c6eb7b81c6cc50b0888c0abfe041c015f5a3a4c555fc3232fe0",
+  "proposalEventId": "3a6203e49dd101c7f7aaad1946703bdd8dcbd7e62e8e364d1f12b3366ea2f92a",
+  "reviewEventId": "dd5aaf4a42f71636484041d6e81341505ca9fb45a033ba57a691d9fb0d152587",
+  "recordEventId": "8d12b1569a5e4fe1a670ea120dfcb2d796271d8e1dc1266545613bb7c0900d7c",
+  "invalidationEventId": "e8517bfc38c01a39dd8bb75f67c09ee98d3d4d68d8bc42c2728cd1c76c6f00ca",
   "sourceCountBefore": 6,
   "sourceCountAfter": 6,
   "outsiderDenied": true,
@@ -24,5 +24,5 @@
   "restartIdempotenceReceipt": true,
   "coverageLabel": "self-attested",
   "passed": true,
-  "completedAt": 1784770620
+  "completedAt": 1784772790
 }

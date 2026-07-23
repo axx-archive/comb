@@ -219,7 +219,7 @@ export default function Home() {
             <ul>
               <li>Stable self-attested coverage</li>
               <li>Outsider access denied</li>
-              <li>Human reviewer signed their own event</li>
+              <li>Separate reviewer identity signed its own event</li>
               <li>Deleted source became unavailable</li>
               <li>Comb record invalidated and deleted</li>
               <li>Restart receipt remained idempotent</li>
