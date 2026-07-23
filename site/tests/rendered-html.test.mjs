@@ -54,9 +54,10 @@ test("renders honest initial delivery status from the manifest", async () => {
   assert.match(html, /Tested \/ acfbb1b \/ Jul 22, 2026/i);
   assert.match(html, /6\/6 proof passed/i);
   assert.match(html, /Upstream/i);
-  assert.match(html, /Not yet proposed/i);
+  assert.match(html, /RFC open \/ #2451/i);
+  assert.match(html, /Read Buzz RFC #2451/i);
   assert.match(html, /does not mean these semantics are upstreamed into Buzz/i);
-  assert.doesNotMatch(html, /Merged in Buzz|PR open/i);
+  assert.doesNotMatch(html, /Merged in Buzz|Implementation PR open/i);
 });
 
 test("includes the independent-project and accessibility contracts", async () => {

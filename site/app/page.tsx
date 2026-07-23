@@ -4,6 +4,7 @@ import { contributionRows, projectStatus } from "./project-status";
 
 const sourceUrl = "https://github.com/axx-archive/comb";
 const buzzUrl = "https://github.com/block/buzz";
+const buzzRfcUrl = "https://github.com/block/buzz/issues/2451";
 const strideUrl = "https://workinstride.ajh-archive.chatgpt.site/";
 const compatibilityProofUrl = `${sourceUrl}/blob/main/tests/e2e/buzz-main-proof.json`;
 
@@ -273,8 +274,11 @@ export default function Home() {
         </div>
         <p className="status-source">
           Status language is rendered from the project’s source-of-truth manifest. The scoped demo is
-          tested. The event semantics are not upstreamed. “Not yet proposed” is not “under review.”
+          tested. The event semantics are not upstreamed. “RFC open” is not “PR open.”
         </p>
+        <a className="text-link" href={buzzRfcUrl} target="_blank" rel="noreferrer">
+          Read Buzz RFC #2451 <span aria-hidden="true">↗</span>
+        </a>
       </section>
 
       <section className="open-source" aria-labelledby="open-title">

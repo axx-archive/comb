@@ -2,6 +2,8 @@
 
 Comb should contribute a general primitive to Buzz, not ask Buzz to merge a branded agent or a parallel knowledge database.
 
+Current discussion: [block/buzz#2451](https://github.com/block/buzz/issues/2451).
+
 ## Sequence
 
 1. Prove the compatibility demo on untouched Buzz main and publish the exact tested SHA.

@@ -19,8 +19,8 @@ export const projectStatus = {
   },
   upstream: {
     label: "Upstream",
-    value: "Not yet proposed",
-    tone: "unproposed",
+    value: "RFC open / #2451",
+    tone: "building",
   },
 } satisfies Record<string, StatusValue>;
 
@@ -33,27 +33,27 @@ export const contributionRows = [
   {
     name: "Evidence-backed knowledge contracts",
     comb: { value: "Working in Comb", tone: "tested" },
-    buzz: { value: "Not yet proposed", tone: "unproposed" },
+    buzz: { value: "RFC #2451", tone: "building" },
   },
   {
     name: "Coverage + source manifests",
     comb: { value: "Working in Comb", tone: "tested" },
-    buzz: { value: "Not yet proposed", tone: "unproposed" },
+    buzz: { value: "RFC #2451", tone: "building" },
   },
   {
     name: "Ratification + supersession",
     comb: { value: "Working in Comb", tone: "tested" },
-    buzz: { value: "Not yet proposed", tone: "unproposed" },
+    buzz: { value: "RFC #2451", tone: "building" },
   },
   {
     name: "Huddle transcript publication",
     comb: { value: "Planned", tone: "planned" },
-    buzz: { value: "Not yet proposed", tone: "unproposed" },
+    buzz: { value: "Later RFC", tone: "planned" },
   },
   {
     name: "Permission-loss propagation",
     comb: { value: "Source deletion tested", tone: "tested" },
-    buzz: { value: "Not yet proposed", tone: "unproposed" },
+    buzz: { value: "RFC boundary", tone: "building" },
   },
 ] satisfies Array<{
   name: string;
