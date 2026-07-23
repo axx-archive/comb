@@ -1,0 +1,13 @@
+/target/
+/.comb/
+/.env
+*.db
+*.db-shm
+*.db-wal
+/site/node_modules/
+/site/.next/
+/site/.open-next/
+/site/.wrangler/
+/site/.env*
+!/site/.env.example
+.DS_Store

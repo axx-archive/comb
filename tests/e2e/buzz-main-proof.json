@@ -1,0 +1,28 @@
+{
+  "schema": "comb.proof.v1",
+  "buzzSha": "acfbb1bb6af54cb29cb152496ff43b8285dcb8cf",
+  "relay": "ws://127.0.0.1:4300",
+  "channelId": "b2fe6337-31b5-4672-9dfe-4102ebf53a69",
+  "sourceEventIds": [
+    "26d2efd7e7679f63d462fc0ba995d993cce25fc217d359cd4c96b41f39ecc079",
+    "4003bf687cb5bd8a88d9b88202d524def79c15ee11b7bbffd81b96ca1176d0e9",
+    "541b1b9ec42bfb57800607feabdea1006dd07efa52883e5f6bef3b4d9fcb3d68",
+    "bbd7ebc019f2cee149ae03cae15e1551223a45fa0813d8a8d75c05fff9faa443",
+    "be8d71c2bb5f00c8ad620efcb7027df8181beb2ce268a979de4abbc692fc1731",
+    "fb6e559239a1d7874d553abbd058bdcc272658575fccbe5a5e0fbb46e5308b77"
+  ],
+  "proposalEventId": "0965d269597cb2be6372653d4444bf91505548fc930664e6d990ab7c2dc3b713",
+  "reviewEventId": "9ac064fe010d6708726a53a8e896dbb6e0e1ede7961f6f5d2acdc668b25f767b",
+  "recordEventId": "31e71657af868acb8739bf5774cff998ba8b1702cbc6b19eb866dc65b0db4234",
+  "invalidationEventId": "3d84444f1b839c6eb7b81c6cc50b0888c0abfe041c015f5a3a4c555fc3232fe0",
+  "sourceCountBefore": 6,
+  "sourceCountAfter": 6,
+  "outsiderDenied": true,
+  "reviewerSignedOwnEvent": true,
+  "sourceDeleted": true,
+  "recordInvalidated": true,
+  "restartIdempotenceReceipt": true,
+  "coverageLabel": "self-attested",
+  "passed": true,
+  "completedAt": 1784770620
+}

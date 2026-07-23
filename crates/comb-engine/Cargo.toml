@@ -1,0 +1,12 @@
+[package]
+name = "comb-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+comb-core = { path = "../comb-core" }
+hex.workspace = true
+serde.workspace = true
+thiserror.workspace = true
